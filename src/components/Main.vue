@@ -33,8 +33,7 @@ export default {
   padding-block: 2rem;
 }
 .search-results {
-  height: 720px;
-  margin-top: 1rem;
+  height: 700px;
   padding: 0.5rem 1rem 1rem 1rem;
   display: flex;
   flex-direction: column;

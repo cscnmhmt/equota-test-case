@@ -18,12 +18,15 @@
     </div>
     <div class="action">
       <div class="number">
-        <input type="number" min="1" v-model="amount" />
+        <input
+          type="number"
+          min="1"
+          :value="parity.amount"
+          @input="change($event)"
+        />
       </div>
-      <!-- if i have already show button group -->
       <div class="buttons">
-        <button class="update" @click="parity.amount = amount">Update</button>
-        <!-- after removed show add button again -->
+        <button class="update" @click="updateAmount">Update</button>
         <button class="remove" @click="removeFromWallet">Remove</button>
       </div>
     </div>
@@ -40,6 +43,12 @@ export default {
   methods: {
     removeFromWallet() {
       this.parity.amount = 0;
+    },
+    updateAmount() {
+      this.parity.amount = this.amount;
+    },
+    change(event) {
+      this.amount = Number(event.target.value);
     },
   },
   props: ['parities', 'parity'],

@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <button class="add-stock" @click="showModal = true">Add / Update</button>
-    <button class="refresh">Refresh</button>
+    <button class="refresh" @click="refresh">Refresh</button>
     <Modal
       v-if="showModal"
       :parities="parities"
@@ -24,6 +24,9 @@ export default {
   methods: {
     closeModal() {
       this.showModal = false;
+    },
+    refresh() {
+      this.$emit('refreshData');
     },
   },
   props: ['parities'],

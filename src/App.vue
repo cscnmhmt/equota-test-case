@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header :parities="parities"></Header>
+    <Header :parities="parities" v-on:refreshData="getData"></Header>
     <Main :parities="parities"></Main>
   </div>
 </template>
@@ -21,24 +21,39 @@ export default {
     Header,
     Main,
   },
-  watch: {},
+  methods: {
+    getData() {
+      get24Ticket()
+        .then((res) => res.json())
+        .then((data) => {
+          const promise = new Promise((resolve, reject) => {
+            resolve(
+              data.map((item, index) =>
+                Object.defineProperty(item, 'amount', {
+                  configurable: true,
+                  enumerable: true,
+                  writable: true,
+                  value:
+                    this.parities.length > 0 ? this.parities[index].amount : 0,
+                })
+              )
+            );
+          });
+          promise.then((data) => (this.parities = data));
+        })
+        .catch((err) => console.error('Error:', err));
+    },
+  },
+  mounted() {
+    this.getData();
+  },
   created() {
-    get24Ticket()
-      .then((res) => res.json())
-      .then(
-        (data) =>
-          (this.parities = data
-            .map((item) =>
-              Object.defineProperty(item, 'amount', {
-                configurable: true,
-                enumerable: true,
-                writable: true,
-                value: 0,
-              })
-            )
-            .slice(0, 31))
-      )
-      .catch((err) => console.error('Error:', err));
+    this.interval = setInterval(() => {
+      this.getData();
+    }, 1200000);
+  },
+  destroyed() {
+    clearInterval(this.interval);
   },
 };
 </script>

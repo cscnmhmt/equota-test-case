@@ -29,12 +29,6 @@ export default {
       return parity.hasOwnProperty('amount');
     },
   },
-  created() {
-    console.log('created list');
-  },
-  updated() {
-    console.log('updated list');
-  },
   props: ['parities', 'keyword'],
 };
 </script>

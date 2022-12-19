@@ -2,7 +2,10 @@
   <div class="pie">
     <GChart
       :type="chartType"
-      :data="chartData"
+      :data="[
+        ['Parity', 'Amount'],
+        ...this.parities.map((p) => [p.symbol, Number(p.amount)]),
+      ]"
       :options="chartOptions"
     ></GChart>
   </div>
@@ -12,32 +15,18 @@
 import { GChart } from 'vue-google-charts/legacy';
 
 export default {
-  name: 'GoogleChart',
   data() {
     return {
-      chartData: [['Parity', 'Amount']],
       chartType: 'PieChart',
       chartOptions: {
-        width: 600,
-        height: 600,
+        width: 700,
+        height: 700,
         legend: 'none',
       },
     };
   },
   components: {
     GChart,
-  },
-  updated() {
-    this.parities.forEach((p) =>
-      this.chartData.push([p.symbol, Number(p.amount)])
-    );
-    console.log('pie updated');
-  },
-  created() {
-    this.parities.forEach((p) =>
-      this.chartData.push([p.symbol, Number(p.amount)])
-    );
-    console.log('pie created');
   },
   props: ['parities'],
 };
