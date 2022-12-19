@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Header :parities="parities" :wallet="wallet"></Header>
-    <Main :parities="parities" :wallet="wallet"></Main>
+    <Header :parities="parities"></Header>
+    <Main :parities="parities"></Main>
   </div>
 </template>
 
@@ -15,13 +15,13 @@ export default {
   data() {
     return {
       parities: [],
-      wallet: [],
     };
   },
   components: {
     Header,
     Main,
   },
+  watch: {},
   created() {
     get24Ticket()
       .then((res) => res.json())
@@ -36,7 +36,7 @@ export default {
                 value: 0,
               })
             )
-            .slice(0, 30))
+            .slice(0, 31))
       )
       .catch((err) => console.error('Error:', err));
   },

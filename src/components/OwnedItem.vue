@@ -42,7 +42,7 @@ export default {
       this.parity.amount = 0;
     },
   },
-  props: ['parities', 'parity', 'wallet'],
+  props: ['parities', 'parity'],
 };
 </script>
 

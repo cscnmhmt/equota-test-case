@@ -6,7 +6,7 @@
       </div>
       <div class="modal-body">
         <Search v-on:searchReq="handleSearch"></Search>
-        <List :parities="parities" :wallet="wallet" :keyword="keyword"></List>
+        <List :parities="parities" :keyword="keyword"></List>
       </div>
     </div>
   </div>
@@ -35,7 +35,7 @@ export default {
       this.keyword = keyword;
     },
   },
-  props: ['parities', 'wallet'],
+  props: ['parities'],
 };
 </script>
 
@@ -51,6 +51,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  z-index: 9999;
 }
 
 .modal-content {

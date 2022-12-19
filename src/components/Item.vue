@@ -44,7 +44,7 @@ export default {
   create() {
     this.amount = 1;
   },
-  props: ['parities', 'parity', 'wallet'],
+  props: ['parities', 'parity'],
 };
 </script>
 

@@ -5,7 +5,6 @@
     <Modal
       v-if="showModal"
       :parities="parities"
-      :wallet="wallet"
       v-on:close="closeModal"
     ></Modal>
   </div>
@@ -27,7 +26,7 @@ export default {
       this.showModal = false;
     },
   },
-  props: ['parities', 'wallet'],
+  props: ['parities'],
 };
 </script>
 
