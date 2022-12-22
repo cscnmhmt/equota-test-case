@@ -31,8 +31,8 @@ export default {
     closeModal() {
       this.$emit('close');
     },
-    handleSearch(keyword) {
-      this.keyword = keyword;
+    handleSearch(query) {
+      this.keyword = query;
     },
   },
   props: ['parities'],

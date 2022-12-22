@@ -20,7 +20,7 @@
       <div class="number">
         <input
           type="number"
-          min="1"
+          min="0"
           :value="parity.amount"
           @input="change($event)"
         />

@@ -41,7 +41,7 @@ export default {
       this.parity.amount = this.amount;
     },
   },
-  create() {
+  created() {
     this.amount = 1;
   },
   props: ['parities', 'parity'],

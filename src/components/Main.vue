@@ -10,17 +10,9 @@ import List from './List.vue';
 import Pie from './Pie.vue';
 
 export default {
-  data() {
-    return {
-      ownedParities: [],
-    };
-  },
   components: {
     List,
     Pie,
-  },
-  created() {
-    this.parities.forEach((p) => this.ownedParities.push(p));
   },
   props: ['parities'],
 };

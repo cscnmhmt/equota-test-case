@@ -24,11 +24,6 @@ export default {
     Item,
     OwnedItem,
   },
-  methods: {
-    checkIfOwned(parity) {
-      return parity.hasOwnProperty('amount');
-    },
-  },
   props: ['parities', 'keyword'],
 };
 </script>
